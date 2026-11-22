@@ -530,6 +530,10 @@ button:hover {
 
 @media (max-width: 700px) {
 
+    html {
+        min-height: 100%;
+    }
+
     body {
         overflow-x: hidden;
         overflow-y: auto;
@@ -545,11 +549,11 @@ button:hover {
         position: relative;
         inset: auto;
         width: 100%;
+        height: auto;
         min-height: 100vh;
         min-height: 100svh;
-        height: auto;
+
         justify-content: center;
         padding: 45px 22px;
     }
-
 }
