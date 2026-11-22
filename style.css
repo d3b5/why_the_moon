@@ -1,0 +1,525 @@
+
+/* ==========================
+   1. GLOBAL STYLES
+========================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #080D20;
+    color: #E8E9F2;
+    font-family: Georgia, serif;
+    overflow: hidden;
+}
+
+/* ==========================
+   2. MAIN JOURNEY CONTAINER
+========================== */
+
+#journey {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+
+    background-color: #080D20;
+
+    background-image:
+        radial-gradient(1px 1px at 10% 20%, #FFFFFF 99%, transparent),
+        radial-gradient(1px 1px at 80% 15%, #FFFFFF 99%, transparent),
+        radial-gradient(2px 2px at 45% 65%, #FFFFFF 99%, transparent),
+        radial-gradient(1px 1px at 70% 85%, #FFFFFF 99%, transparent),
+        radial-gradient(1px 1px at 25% 80%, #FFFFFF 99%, transparent);
+
+    background-size: 350px 350px;
+}
+
+/* ==========================
+   3. SCENE SYSTEM
+========================== */
+
+.scene {
+    min-height: 100vh;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 24px;
+    padding: 30px;
+
+    position: absolute;
+    inset: 0;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(20px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        visibility 0.8s;
+}
+
+.scene.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* ==========================
+   4. TYPOGRAPHY
+========================== */
+
+h1 {
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: normal;
+}
+
+p {
+    color: #AAA0D0;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    max-width: 550px;
+}
+
+.eyebrow {
+    font-family: Arial, sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    color: #AAA0D0;
+}
+
+/* ==========================
+   5. BUTTONS
+========================== */
+
+button {
+    padding: 14px 28px;
+
+    background: transparent;
+    color: #E8E9F2;
+
+    border: 1px solid #AAA0D0;
+    border-radius: 30px;
+
+    cursor: pointer;
+    font-size: 1rem;
+
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #AAA0D0;
+    color: #080D20;
+}
+
+/* ==========================
+   6. THE MOON
+========================== */
+
+.moon {
+    width: clamp(140px, 22vw, 230px);
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle at 30% 35%,
+            transparent 0 5%,
+            rgba(80, 82, 100, 0.25) 6% 9%,
+            transparent 10%),
+
+        radial-gradient(circle at 65% 60%,
+            rgba(80, 82, 100, 0.2) 0 7%,
+            transparent 8%),
+
+        radial-gradient(circle at 42% 75%,
+            rgba(80, 82, 100, 0.18) 0 4%,
+            transparent 5%),
+
+        radial-gradient(circle at 35% 30%,
+            #FFFFFF,
+            #D9DCE8 55%,
+            #A8AEC4 100%);
+
+    box-shadow:
+        0 0 35px rgba(220, 225, 255, 0.25),
+        0 0 90px rgba(180, 190, 255, 0.15);
+
+    animation: moonFloat 6s ease-in-out infinite;
+}
+
+/* ==========================
+   7. MOON ANIMATION
+========================== */
+
+@keyframes moonFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+}
+
+
+/* ==========================
+   8. DISTANCE DIAGRAM
+========================== */
+
+.distance-diagram {
+    width: min(650px, 90vw);
+    height: 160px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: relative;
+    margin: 15px 0;
+}
+
+/* EARTH */
+
+.earth {
+    width: 105px;
+    aspect-ratio: 1;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle at 35% 35%,
+            #80C9E8,
+            #2874A6 55%,
+            #102D59);
+
+    box-shadow:
+        0 0 25px rgba(75, 160, 230, 0.35);
+}
+
+/* DISTANCE LINE */
+
+.space-line {
+    flex: 1;
+    height: 2px;
+
+    border-top: 2px dashed #AAA0D0;
+
+    position: relative;
+
+    margin: 0 12px;
+}
+
+.space-line span {
+    position: absolute;
+
+    left: 50%;
+    top: -32px;
+
+    transform: translateX(-50%);
+
+    color: #AAA0D0;
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+/* SMALL MOON */
+
+.mini-moon {
+    width: 42px;
+    aspect-ratio: 1;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle at 35% 30%,
+            #FFFFFF,
+            #D9DCE8 60%,
+            #A8AEC4);
+
+    box-shadow:
+        0 0 20px rgba(220, 225, 255, 0.4);
+}
+
+/* DISTANCE PAGE TEXT */
+
+.science-note {
+    font-size: 1rem;
+    color: #AAA0D0;
+}
+
+.personal-note {
+    max-width: 600px;
+    font-size: 1.15rem;
+    color: #cbcbcb;
+    line-height: 1.9;
+}
+
+/* ==========================
+   9. RADIANCE SCENE
+========================== */
+
+.radiance-moon {
+    width: clamp(130px, 19vw, 200px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle at 35% 30%,
+            #FFFFFF,
+            #E2E4F0 55%,
+            #A8AEC4);
+
+    box-shadow:
+        0 0 40px rgba(225, 230, 255, 0.4),
+        0 0 100px rgba(180, 190, 255, 0.25);
+
+    animation: moonFloat 6s ease-in-out infinite;
+}
+
+.fact-card {
+    width: min(500px, 90vw);
+
+    padding: 20px;
+
+    border: 1px solid rgba(170, 160, 208, 0.3);
+    border-radius: 12px;
+
+    background: rgba(170, 160, 208, 0.06);
+}
+
+.fact-label {
+    font-family: Arial, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+    color: #C5B8EA;
+}
+
+.albedo {
+    font-size: 0.85rem;
+    margin-top: 12px;
+    opacity: 0.7;
+}
+
+
+/* ==========================
+   10. AFFECTION SCENE
+========================== */
+
+.affection-equation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(20px, 6vw, 65px);
+
+    margin: 15px 0;
+}
+
+.affection-object {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.affection-object p {
+    font-size: 1rem;
+}
+
+.equation-moon,
+.equation-heart {
+    width: 85px;
+    height: 85px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 4rem;
+
+    border-radius: 50%;
+
+    background: rgba(170, 160, 208, 0.08);
+
+    box-shadow:
+        0 0 30px rgba(170, 160, 208, 0.12);
+}
+
+.equation-moon {
+    color: #E8E9F2;
+}
+
+.equation-heart {
+    color: #D9A9C8;
+}
+
+.equal-sign {
+    font-size: 2.5rem;
+    color: #AAA0D0;
+}
+
+.equation-text {
+    font-family: monospace;
+    font-size: 1rem;
+    margin: 8px 0;
+}
+
+.equation-result {
+    color: #E8C9E0;
+    font-size: 1.1rem;
+    margin-top: 16px;
+}
+
+
+/* ==========================
+   11. GENTLENESS SCENE
+========================== */
+
+.light-comparison {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+
+    width: min(600px, 95vw);
+}
+
+.light-card {
+    flex: 1;
+    padding: 22px 12px;
+
+    border-radius: 14px;
+    text-align: center;
+
+    border: 1px solid rgba(170, 160, 208, 0.2);
+}
+
+.light-card h2 {
+    font-size: 1.2rem;
+    font-weight: normal;
+    margin: 12px 0;
+}
+
+.light-card p {
+    font-size: 0.85rem;
+}
+
+.sunlight {
+    background: rgba(255, 190, 90, 0.07);
+    border-color: rgba(255, 190, 90, 0.25);
+}
+
+.moonlight {
+    background: rgba(170, 160, 208, 0.09);
+}
+
+.sun-icon,
+.light-icon {
+    font-size: 3.5rem;
+}
+
+.sun-icon {
+    color: #FFD27A;
+    text-shadow: 0 0 25px rgba(255, 190, 90, 0.5);
+}
+
+.light-icon {
+    color: #E8E9F2;
+    text-shadow: 0 0 25px rgba(220, 225, 255, 0.5);
+}
+
+@media (max-width: 480px) {
+    .light-comparison {
+        gap: 10px;
+    }
+
+    .light-card {
+        padding: 16px 8px;
+    }
+}
+
+
+.lunar-phases {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: clamp(10px, 3vw, 25px);
+    margin: 20px 0;
+}
+
+.lunar-phases span {
+    font-size: clamp(1.8rem, 4vw, 2.7rem);
+    filter: drop-shadow(0 0 12px rgba(220, 225, 255, 0.2));
+    animation: phaseFloat 4s ease-in-out infinite;
+}
+
+.lunar-phases span:nth-child(even) {
+    animation-delay: 0.5s;
+}
+
+@keyframes phaseFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.final-moon {
+    width: clamp(110px, 17vw, 170px);
+    margin-bottom: 10px;
+}
+
+.closing-line {
+    font-size: 1rem;
+    font-style: italic;
+    color: #C5B8EA;
+    margin-top: 5px;
+}
+
+.side-notes-link {
+    margin-top: 20px;
+    color: #AAA0D0;
+    font-size: 0.85rem;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.side-notes-link:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.signature {
+    font-size: 0.9rem;
+    color: #AAA0D0;
+    margin-top: 15px;
+    letter-spacing: 1px;
+}
+
