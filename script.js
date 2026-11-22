@@ -10,6 +10,7 @@ buttons.forEach(function(button) {
 
         scenes.forEach(function(scene) {
             scene.classList.remove("active");
+            window.scrollTo(0, 0);
         });
 
         const nextScene = document.getElementById(nextSceneId);
